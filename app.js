@@ -1,5 +1,3 @@
-//jshint esversion:6
-
 const express = require("express")
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
@@ -21,14 +19,35 @@ app.get('/', (req, res) => {
   res.render('home', { homeStartingContent: homeStartingContent })
 })
 
+app.post('/', (req, res) => {
+  console.log(req.body)
+})
+
+// :ABOUT
+app.get('/about', (req, res) => {
+  res.render('about', { aboutContent: aboutContent })
+})
+
+// :CONTACT
+app.get('/contact', (req, res) => {
+  res.render('contact', { contactContent: contactContent })
+})
+
+// :COMPOSE
+app.get('/compose', (req, res) => {
+  res.render('compose')
+})
+
+app.post('/compose', (req, res) => {
+  const post = {
+    composeTitle: req.body.composeTitle,
+    composePost: req.body.composePost
+  }
+  console.log(post)
+})
 
 
-
-
-
-
-
-
+// :LISTEN
 app.listen(3000, function () {
   console.log("Server started on port 3000")
 })
