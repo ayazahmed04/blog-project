@@ -1,6 +1,23 @@
 <%- include('./partials/header') -%>
-    <h1>HOME</h1>
+    <h1>
+        Home
+    </h1>
     <p>
         <%= homeStartingContent %>
     </p>
-    <%- include('./partials/footer') -%>
+
+    <!-- 
+    <% for (let i=0 ; i < post.length ; i ++ ) { %>
+        <% console.log(post[i].composeTitle) %>
+            <% } %>
+ -->
+    <% post.forEach( value=> { %>
+        <h1>
+            <%= value.composeTitle %>
+        </h1>
+        <p>
+            <%= value.composePost %>
+        </p>
+        <% }) %>
+
+            <%- include('./partials/footer') -%>

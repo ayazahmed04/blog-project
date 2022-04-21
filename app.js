@@ -14,13 +14,13 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
+const post = []
 // :HOME
 app.get('/', (req, res) => {
-  res.render('home', { homeStartingContent: homeStartingContent })
+  res.render('home', { homeStartingContent: homeStartingContent, post: post })
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body)
 })
 
 // :ABOUT
@@ -39,11 +39,14 @@ app.get('/compose', (req, res) => {
 })
 
 app.post('/compose', (req, res) => {
-  const post = {
+
+  const globalPost = {
     composeTitle: req.body.composeTitle,
     composePost: req.body.composePost
   }
-  console.log(post)
+  post.push(globalPost)
+  res.redirect('/')
+
 })
 
 

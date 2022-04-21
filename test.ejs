@@ -1,0 +1,15 @@
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt ad neque, veniam eveniet consectetur aperiam corrupti
+alias, hic quaerat qui voluptatum id inventore nostrum quos recusandae voluptates necessitatibus reprehenderit illum,
+nisi quisquam libero.
+<% for (let i=0; i < post.length; i++) { %>
+    <% if (post[i].composeTitle && post[i].composePost) { %>
+        <h1>
+            <%= post[i].composeTitle %>
+                <% console.log(post[i].composeTitle) %>
+        </h1>
+        <p>
+            <%= post[i].composePost %>
+        </p>
+        <%} else { %>
+            <h1>Nothing</h1>
+            <% } } %>
