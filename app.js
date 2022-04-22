@@ -1,5 +1,6 @@
 const express = require("express")
 const bodyParser = require("body-parser")
+const _ = require('lodash')
 const ejs = require("ejs")
 const { process_params } = require("express/lib/router")
 const { application } = require("express")
@@ -20,7 +21,6 @@ const post = []
 app.route('/')
   .get((req, res) => {
     res.render('home', { homeStartingContent: homeStartingContent, post: post })
-    console.log(req.params)
   })
 
 // :ABOUT
@@ -52,9 +52,20 @@ app.route('/compose')
   })
 
 // :POSTS
-app.route('/posts/:id')
+app.route('/posts/:userId')
   .get((req, res) => {
-    console.log(req.params.id)
+    let userid = _.lowerCase(req.params.userId)
+    post.forEach((i) => {
+      const storedTitle = _.lowerCase(i.composeTitle)
+
+      if (storedTitle === userid) {
+        console.log('Match Found')
+      } else {
+        // console.log(req.params.userId)
+        // console.log(storedTitle)
+      }
+    })
+
   })
 
 
